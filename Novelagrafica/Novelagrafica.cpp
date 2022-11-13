@@ -20,7 +20,14 @@ int main()
     Nodo* G = new Nodo("G");
     Nodo* NodoActual = new Nodo("aux");
     
-    A->setScene("jaken.png");
+    A->setScene("messi.jpg");
+    B->setScene("jaken.png");
+    C->setScene("messi.jpg");
+    D->setScene("jaken.png");
+    E->setScene("messi.jpg");
+    F->setScene("jaken.png");
+    G->setScene("messi.jpg");
+
     A->listaAdyacencia = { B, C };
     B->listaAdyacencia = { D, E};
     C->listaAdyacencia = { G };
@@ -33,7 +40,7 @@ int main()
     
 
     list<Nodo*> MatrizNodos = {A, B, C, D, E, F, G};
-   
+    std::list<Nodo*>::iterator element;
 
     
 
@@ -60,20 +67,27 @@ int main()
         std::string opcion;
         cin >> opcion;
 
-        std::list<Nodo*>::iterator element;
-        element = find_if(MatrizNodos.begin(), MatrizNodos.end(), [opcion](Nodo* n) {
-            std::list<Nodo*>::iterator it = n->listaAdyacencia.begin();
-            Nodo* temp = *it;
-            for (it; it != n->listaAdyacencia.end(); ++it) {
-                if (temp->getName() == opcion) {
-                    return temp;
+        element = find_if(NodoActual->listaAdyacencia.begin(), NodoActual->listaAdyacencia.end(), [opcion](Nodo* n1) {
+            if (n1->getName() == opcion) {
+                return n1;
                 }
-                else {
-                    cout << "No existe esa opcion" << endl;
-                }
-            }
             });
         NodoActual = *element;
+
+        //element = find_if(MatrizNodos.begin(), MatrizNodos.end(), [opcion, &NodoActual](Nodo* n) {
+//    std::list<Nodo*>::iterator it = n->listaAdyacencia.begin();
+//    for (it; it != n->listaAdyacencia.end(); ++it) {
+//        Nodo* temp = *it;
+//        if (temp->getName() == opcion) {                
+//             return NodoActual = temp;
+//        }
+//        else {
+//            cout << "No existe esa opcion" << endl;
+//        }
+//    }
+//    });
+//
+        //NodoActual = *element;
         /*while(element != NodoActual->listaAdyacencia.end())*/
         
         /*std::list<string>::iterator element;
