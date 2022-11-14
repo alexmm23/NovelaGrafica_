@@ -130,12 +130,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Arista.cpp" />
     <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="Novelagrafica.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arista.h" />
     <ClInclude Include="Nodo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

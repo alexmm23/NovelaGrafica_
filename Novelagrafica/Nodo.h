@@ -5,24 +5,22 @@
 #include <SFML/Audio.hpp>
 
 
-class Arista;
-
-class Nodo{
+class Nodo {
 private:
 	std::string name;
 	std::string path;
+	std::string context;
 	sf::Texture texture;
 	sf::Sprite sprite;
 	Nodo* next;
-	Arista* ari;
-
 
 public:
 	Nodo(std::string);
 	void setScene(std::string);
 	std::string getName();
+	void setContext(std::string);
+	std::string getContext();
 	std::list<Nodo*> listaAdyacencia;
 	sf::Sprite getScene();
-	//friend ostream& operator <<(ostream& os, std::list<std::string> listad);
 };
 

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Nodo.h"
-#include "Arista.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -33,16 +32,14 @@ int main()
     C->listaAdyacencia = { G };
     D->listaAdyacencia = { C, F};
     E->listaAdyacencia = { B, C };
-    F->listaAdyacencia = {  NULL };
+    F->listaAdyacencia = { };
     G->listaAdyacencia = { F };
     
     NodoActual = A;
-    
-
+   
     list<Nodo*> MatrizNodos = {A, B, C, D, E, F, G};
     std::list<Nodo*>::iterator element;
-
-    
+       
 
     while (window.isOpen()) {
  
@@ -57,67 +54,45 @@ int main()
         window.draw(NodoActual->getScene());
         window.display();
 
+        if (NodoActual->listaAdyacencia.empty()) {
+            cout << "GAME OVER" << endl;
+            system("pause");
+            cout << "Quieres volver a empezar? [Y] Si\n[N] No" << endl;
+            std::string _empezar;
+            cin >> _empezar;
+            if (_empezar == "y" || _empezar == "Y") {
+                NodoActual = A;
+            }
+            else {
+                window.close();
 
-        cout << "A donde quieres ir?" << endl;
-        for (auto x : NodoActual->listaAdyacencia)
-        {
-            cout << x->getName() << " ";
+            }
         }
-        cout << endl;
-        std::string opcion;
-        cin >> opcion;
+        else {
+            cout << "A donde quieres ir?" << endl;
+            for (auto x : NodoActual->listaAdyacencia)
+            {
+                cout << x->getName() << " ";
+            }
+            cout << endl;
+            std::string opcion;
+            cin >> opcion;
 
-        element = find_if(NodoActual->listaAdyacencia.begin(), NodoActual->listaAdyacencia.end(), [opcion](Nodo* n1) {
-            if (n1->getName() == opcion) {
-                return n1;
+            element = find_if(NodoActual->listaAdyacencia.begin(), NodoActual->listaAdyacencia.end(), [&NodoActual, opcion](Nodo* n1) {
+                if (n1->getName() == opcion) {
+                    return NodoActual = n1;
                 }
-            });
-        NodoActual = *element;
-
-        //element = find_if(MatrizNodos.begin(), MatrizNodos.end(), [opcion, &NodoActual](Nodo* n) {
-//    std::list<Nodo*>::iterator it = n->listaAdyacencia.begin();
-//    for (it; it != n->listaAdyacencia.end(); ++it) {
-//        Nodo* temp = *it;
-//        if (temp->getName() == opcion) {                
-//             return NodoActual = temp;
-//        }
-//        else {
-//            cout << "No existe esa opcion" << endl;
-//        }
-//    }
-//    });
-//
-        //NodoActual = *element;
-        /*while(element != NodoActual->listaAdyacencia.end())*/
-        
-        /*std::list<string>::iterator element;
-        element = find_if(NodoActual->listaAdyacencia.begin(), NodoActual->listaAdyacencia.end(), [opcion](string name) {
-            if (name == opcion)
-                return "hello"; });
-        
-        if(element != NodoActual->listaAdyacencia.end()){
-            NodoActual = 
-        }*/
-        //auto element = for_each(MatrizAdyacente.begin(), MatrizAdyacente.end(), [opcion](list<Nodo*> plist)
-        //    {
-        //        list<Nodo*>::iterator i = plist.begin();
-        //        Nodo* aux = new Nodo("aux");
-        //        for (i; i != plist.end(); i++) {
-        //            
-        //            aux = *i;
-        //            if (aux->getName() == opcion) {
-        //                cout << aux->getName();
-        //                return aux;
-        //            }
-        //            else {
-        //                cout << "falla al encontrar el nombre del nodo";
-        //                return aux;
-        //            }
-        //        }
-        //    });
-        //auxiliar = element;
+                else
+                {
+                    cout << "Elije una opcion valida" << endl;
+                    system("pause");
+                    system("cls");
+                }
+                });
+        }
     }
 
 
-
+    delete A, B, C, D, E, F, G;
+    delete NodoActual;
 }
