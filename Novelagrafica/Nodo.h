@@ -12,15 +12,20 @@ private:
 	std::string context;
 	sf::Texture texture;
 	sf::Sprite sprite;
-	Nodo* next;
+	std::string nmusic;
+
 
 public:
 	Nodo(std::string);
 	void setScene(std::string);
+	sf::Sprite getScene();
 	std::string getName();
 	void setContext(std::string);
 	std::string getContext();
-	std::list<Nodo*> listaAdyacencia;
-	sf::Sprite getScene();
+	std::list<Nodo*> listaAdyacencia = {};
+	void setMusic(std::string);
+	std::string getMusic();
+	
+	
 };
 

@@ -3,12 +3,15 @@ using namespace std;
 
 Nodo::Nodo(std::string _name) {
 	name = _name;
+	
 
 }
 
 void Nodo::setScene(std::string _path) {
-	texture.loadFromFile(_path);
+	path = _path;
+	texture.loadFromFile("images/" + path);
 	sprite.setTexture(texture);
+	
 }
 sf::Sprite Nodo::getScene() {
 	return sprite;
@@ -23,4 +26,11 @@ void Nodo::setContext(std::string _context) {
 }
 std::string Nodo::getContext() {
 	return context;
+}
+
+void Nodo::setMusic(std::string _path) {
+	nmusic = _path;
+}
+std::string Nodo::getMusic() {
+	return nmusic;
 }

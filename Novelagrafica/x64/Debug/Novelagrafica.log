@@ -1,1 +1,3 @@
-﻿  Novelagrafica.vcxproj -> C:\Users\Usuario\source\repos\Novelagrafica\x64\Debug\Novelagrafica.exe
+﻿  Novelagrafica.cpp
+C:\Users\Usuario\source\repos\Novelagrafica\Novelagrafica\Novelagrafica.cpp(105): warning C4715: '`main'::`18'::<lambda_1>::operator()': no todas las rutas de acceso de control devuelven un valor
+  Novelagrafica.vcxproj -> C:\Users\Usuario\source\repos\Novelagrafica\x64\Debug\Novelagrafica.exe
