@@ -3,16 +3,14 @@ using namespace std;
 
 Nodo::Nodo(std::string _name) {
 	name = _name;
-	
-
 }
 
 void Nodo::setScene(std::string _path) {
 	path = _path;
 	texture.loadFromFile("images/" + path);
 	sprite.setTexture(texture);
-	
 }
+
 sf::Sprite Nodo::getScene() {
 	return sprite;
 }
